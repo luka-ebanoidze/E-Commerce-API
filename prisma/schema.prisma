@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:D:/Dekstop/finalapi-main/prisma/dev.db"
+}
+
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
+  username String @unique
+  password String
+  role     String
+}
+
+model Product {
+  id          String  @id @default(uuid())
+  title       String
+  description String
+  category    String
+  price       Float
+  deletable   Boolean @default(false)
+}
+
+// enum TCategory_Enum {
+//   HOME
+//   GAMING
+//   PHONES
+// }
+
+// enum TUser_Role_Enum {
+//   ADMIN
+//   USER
+// }
